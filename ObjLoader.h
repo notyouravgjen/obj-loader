@@ -37,17 +37,7 @@ typedef struct
 class ObjLoader
 {
 public:
-	//ObjLoader(void);
-	//~ObjLoader(void);
-
-	//void GetModelFilename(char*);
 	static bool LoadModel(char*, Mesh**, ID3D11Device*, ID3D11DeviceContext*, ID3D11SamplerState*);
 	static bool ReadFileCounts(char*, int&, int&, int&, int&);
 	static bool LoadDataStructures(char*, int, int, int, int, Mesh**, ID3D11Device*, ID3D11DeviceContext*, ID3D11SamplerState*);
-
-	//int init();
-
-	//Vertex* getVertices();
-
-	//Vertex* vertices;
 };
