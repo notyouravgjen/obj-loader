@@ -2,23 +2,6 @@
 #include "DebugOutput.h"
 using namespace std;
 
-/*void ObjLoader::GetModelFilename(char* filename)
-{
-	bool done;
-	ifstream fin;
-
-	/// Attempt to open the file.
-	fin.open(filename);
-
-	if(!fin.good())
-	{
-		// If the file does not exist or there was an issue opening it then notify the debug.
-		fin.clear();
-
-		DebugOutput::debugLog("Error opening model: " + *filename);
-	}
-}*/
-
 bool ObjLoader::LoadModel(char* filename, Mesh** mesh, ID3D11Device* device, ID3D11DeviceContext* deviceContext, ID3D11SamplerState* ss)
 {
 	int vertexCount, textureCount, normalCount, faceCount;
@@ -264,18 +247,6 @@ bool ObjLoader::LoadDataStructures(char* filename, int vertexCount, int textureC
 	int indexIndex = 0;
 
 	DirectX::XMFLOAT4 red = DirectX::XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f);
-	//XMFLOAT3(+0.0f, +0.5f, +0.0f), red, XMFLOAT2(0.5, 0)
-	/*for(int i = 0; i < vertexCount; i++)
-	{
-		outVertices[i].Position = DirectX::XMFLOAT3(vertices[i].x, vertices[i].y, vertices[i].z);
-		outVertices[i].Color = DirectX::XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f); // red for default
-		outVertices[i].UVPosition = DirectX::XMFLOAT2(0.0f, 0.0f);
-	}*/
-
-	/*std::string sfloatX = std::to_string(outVertices[0].Position.x);
-	std::string sfloatY = std::to_string(outVertices[0].Position.y);
-	std::string sfloatZ = std::to_string(outVertices[0].Position.z);
-	DebugOutput::debugLog("Vertex[1].x: " + sfloatX + "\nVertex[1].y: " + sfloatY + "\nVertex[1].z: " + sfloatZ);*/
 
 	// Now loop through all the faces and output the three vertices for each face.
 	for(int i=0; i<faceIndex; i++)
@@ -318,32 +289,6 @@ bool ObjLoader::LoadDataStructures(char* filename, int vertexCount, int textureC
 		//sint = std::to_string(outIndices[indexIndex]);
 		//DebugOutput::debugLog("Index3: " + sint);
 		indexIndex++;
-
-		/*vIndex = faces[i].vIndex1 - 1;
-		tIndex = faces[i].tIndex1 - 1;
-		nIndex = faces[i].nIndex1 - 1;
-
-
-
-		fout << vertices[vIndex].x << ' ' << vertices[vIndex].y << ' ' << vertices[vIndex].z << ' '
-		     << texcoords[tIndex].x << ' ' << texcoords[tIndex].y << ' '
-		     << normals[nIndex].x << ' ' << normals[nIndex].y << ' ' << normals[nIndex].z << endl;
-
-		vIndex = faces[i].vIndex2 - 1;
-		tIndex = faces[i].tIndex2 - 1;
-		nIndex = faces[i].nIndex2 - 1;
-
-		fout << vertices[vIndex].x << ' ' << vertices[vIndex].y << ' ' << vertices[vIndex].z << ' '
-		     << texcoords[tIndex].x << ' ' << texcoords[tIndex].y << ' '
-		     << normals[nIndex].x << ' ' << normals[nIndex].y << ' ' << normals[nIndex].z << endl;
-
-		vIndex = faces[i].vIndex3 - 1;
-		tIndex = faces[i].tIndex3 - 1;
-		nIndex = faces[i].nIndex3 - 1;
-
-		fout << vertices[vIndex].x << ' ' << vertices[vIndex].y << ' ' << vertices[vIndex].z << ' '
-		     << texcoords[tIndex].x << ' ' << texcoords[tIndex].y << ' '
-		     << normals[nIndex].x << ' ' << normals[nIndex].y << ' ' << normals[nIndex].z << endl;*/
 	}
 
 	*mesh = new Mesh(outVertices, outIndices, faceCount * 3, faceCount * 3);
