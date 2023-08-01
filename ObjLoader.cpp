@@ -232,15 +232,6 @@ bool ObjLoader::LoadDataStructures(char* filename, int vertexCount, int textureC
 	// Close the file.
 	fin.close();
 
-	// Open the output file.
-	//fout.open("model.txt");
-	
-	// Write out the file header that our model format uses.
-	//fout << "Vertex Count: " << (faceCount * 3) << endl;
-	//fout << endl;
-	//fout << "Data:" << endl;
-	//fout << endl;
-
 	Vertex* outVertices = new Vertex[faceCount * 3];
 	UINT* outIndices = new UINT[faceCount * 3];
 
@@ -260,10 +251,6 @@ bool ObjLoader::LoadDataStructures(char* filename, int vertexCount, int textureC
 		faces[i].vIndex3 -= 1;
 		faces[i].tIndex3 -= 1;
 		faces[i].nIndex3 -= 1;
-
-		/*outVertices[faces[i].vIndex1].UVPosition = DirectX::XMFLOAT2(texcoords[faces[i].tIndex1].x, texcoords[faces[i].tIndex1].y);
-		outVertices[faces[i].vIndex2].UVPosition = DirectX::XMFLOAT2(texcoords[faces[i].tIndex2].x, texcoords[faces[i].tIndex2].y);
-		outVertices[faces[i].vIndex3].UVPosition = DirectX::XMFLOAT2(texcoords[faces[i].tIndex3].x, texcoords[faces[i].tIndex3].y);*/
 
 		outIndices[indexIndex] = indexIndex;
 		outVertices[indexIndex].Position = DirectX::XMFLOAT3(vertices[faces[i].vIndex3].x, vertices[faces[i].vIndex3].y, vertices[faces[i].vIndex3].z);
@@ -293,15 +280,10 @@ bool ObjLoader::LoadDataStructures(char* filename, int vertexCount, int textureC
 
 	*mesh = new Mesh(outVertices, outIndices, faceCount * 3, faceCount * 3);
 	(*mesh)->createBuffers(device, deviceContext);
-	//*mat = new Material(ss, L"shipTexture.png", device, deviceContext);
-	//*mat = new Material(ss, L"checker.png", device, deviceContext);
 
 	// These should be deleted because the Mesh's constructor allocates memory and makes its own copy of them
 	delete outVertices;
 	delete outIndices;
-
-	// Close the output file.
-	//fout.close();
 
 	// Release the four data structures.
 	if(vertices)
