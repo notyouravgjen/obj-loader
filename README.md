@@ -6,6 +6,8 @@ An .obj loader for DirectX 11. Made for a student project for Game Graphics Prog
 
 I followed a tutorial on rastertek.com. The link is now broken but was previosuly located at: http://www.rastertek.com/dx10tut08.html
 
+An archive of this webpage can be found at: https://web.archive.org/web/20210507045910/http://www.rastertek.com:80/dx10tut08.html
+
 ## Authors
 
 Jennifer Stanton (notyouravgjen)
